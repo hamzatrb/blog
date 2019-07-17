@@ -1,0 +1,57 @@
+<div>
+	
+	<h2><a href=""><i class="fas fa-home icon"></i>Article</a></h2>
+	<ul class="post">
+		
+
+		<li class="post-list">
+			<p><h4><?=$post['Title']?></h4></p>
+			<p><?=$post['Contents']?></p>
+			<p><span>Redigé par <?=$post['LastName']?> <?=$post['FirstName']?> le
+			 <?=$post['CreationTimestamp']?></span></p>
+		</li>
+	</ul>	
+	<hr>
+	<?php foreach ($comments  as $comment): ?>
+
+		<p><i class="fas fa-comments"></i><strong>rédigé le <small> " <?=$comment['CreationTimestamp']?> " </small> par  <?=$comment['NickName']?></strong></p>
+		<p><?=$comment['Contents']?></p>
+	<?php endforeach; ?>
+	<hr>
+
+	<form method="POST" action="" class="generic-form">
+ 
+   <fieldset>
+
+       <legend><i class="far fa-comment"></i>Nouveau commentaire</legend> <!-- Titre du fieldset --> 
+       <ul>
+
+           <li>
+           	 	<label for="pseudo">Pseudo :</label>
+	            <input type="text" name="pseudo" value="" id="pseudo" />
+	          
+       		</li>
+
+       		 <li>
+       		   <label class="textarea" for="commentaire">commentaire :</label>
+	           <textarea  name="commentaire" value="" id="commentaire" rows="8" cols="33"> </textarea>
+	          
+       		</li>
+     		 <li>
+       		 <label><input class="button  button-primary" type="submit" name="ajouter" value="ajouter"></label> 
+	          <label><input class="button  button-cancel" type="reset" name="Annuler" value="Annuler"></label>
+       		</li>
+
+       </ul>    		 
+
+           
+     
+
+   </fieldset>
+
+ 
+
+</form>
+	
+
+</div>
