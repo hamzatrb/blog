@@ -1,0 +1,38 @@
+  
+<div>
+<h2><a href="index.php"><i class="far fa-file-alt"></i></i>Panneaux D'administration</a></h2>
+<a href="add_post.php"><h3>Rediger un nouvel article</h3></a>
+<table>
+
+   <caption>Liste des article</caption>
+
+   <thead> <!-- En-tête du tableau -->
+   
+       <tr>
+           <th>Titre</th>
+           <th>Article</th>
+           <th>Auteur</th>
+           <th>Categorie</th>
+           <th></th>
+          
+       </tr>
+       
+   </thead>
+
+   <tbody> <!-- Corps du tableau -->
+
+     <?php foreach ($listPosts as  $listpost): ?>
+       <tr>
+           <td><a href="show_post.php?id=<?=$listpost['Id']?>"><?=htmlspecialchars($listpost['Title'])?></a></td>
+           <td><?=htmlspecialchars($listpost['Contents'])?></td>
+           <td><?=htmlspecialchars($listpost['FirstName'])?><br>
+           <?=htmlspecialchars($listpost['LastName'])?></td>
+           <td><?=htmlspecialchars($listpost['Name'])?></td>
+           <td><p><a href="edit_post.php?id=<?=$listpost['Id']?>"><i class="fas fa-pen"></i></a></p>
+            <p><a href="deletepost.php?id=<?=$listpost['Id']?>"><i class="fas fa-times"></i></a></p></td>
+          
+       </tr>
+ <?php endforeach ?>
+  </tbody>
+</table>
+</div>  

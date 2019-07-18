@@ -3,8 +3,10 @@
 include 'application/connexion_bdd.php';
 
 
+
 if(isset($_GET['id']))
 {
+	//requete pour afficher l'article 
 
 	$req_post = $pdo->prepare('  SELECT  p.Title,  p.Contents,  p.CreationTimestamp, a.LastName, a.FirstName
 								 FROM post p 
@@ -18,14 +20,8 @@ if(isset($_GET['id']))
 
 	$post = $req_post->fetch();
 
+	//requete pour afficher les commentaire associé à cette article
 
-
-}
-
-
-if(isset($_GET['id']))
-
-{
 	$req_commnt = $pdo->prepare('
 							SELECT NickName,Contents,CreationTimestamp FROM comment WHERE 
 							Post_Id= ?'
@@ -35,8 +31,17 @@ if(isset($_GET['id']))
 
 	$comments = $req_commnt->fetchAll();
 
+	//requete d'insertion à la base de données 
 
-} 
+
+}
+
+
+
+
+
+
+
 
 
 $template = "show_post";

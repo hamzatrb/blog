@@ -1,30 +1,38 @@
 <div>
-	
-	<h2><a href=""><i class="fas fa-home icon"></i>Article</a></h2>
+
+	<h2><a href="index.php"><i class="far fa-file-alt"></i></i>Article</a></h2>
 	<ul class="post">
 		
 
 		<li class="post-list">
-			<p><h4><?=$post['Title']?></h4></p>
-			<p><?=$post['Contents']?></p>
-			<p><span>Redigé par <?=$post['LastName']?> <?=$post['FirstName']?> le
-			 <?=$post['CreationTimestamp']?></span></p>
+			<p><h4><?=htmlspecialchars($post['Title'])?></h4></p>
+			<p><?=htmlspecialchars($post['Contents'])?></p>
+			<p><span>Redigé par <?=htmlspecialchars($post['LastName'])?> <?=htmlspecialchars($post['FirstName'])?> le
+			 <?=htmlspecialchars($post['CreationTimestamp'])?></span></p>
 		</li>
 	</ul>	
 	<hr>
 	<?php foreach ($comments  as $comment): ?>
 
-		<p><i class="fas fa-comments"></i><strong>rédigé le <small> " <?=$comment['CreationTimestamp']?> " </small> par  <?=$comment['NickName']?></strong></p>
-		<p><?=$comment['Contents']?></p>
+		<p><i class="fas fa-comments"></i><strong>rédigé le <small> " 
+			<?=htmlspecialchars($comment['CreationTimestamp'])?> " </small> par
+			<?=htmlspecialchars($comment['NickName'])?></strong></p>
+		<p> <?=htmlspecialchars($comment['Contents'])?></p>
 	<?php endforeach; ?>
 	<hr>
 
-	<form method="POST" action="" class="generic-form">
+	<form method="POST" action="add_comment.php" class="generic-form">
  
    <fieldset>
 
        <legend><i class="far fa-comment"></i>Nouveau commentaire</legend> <!-- Titre du fieldset --> 
        <ul>
+
+           <li class="hide">
+           	 	<label for="idpost">id post :</label>
+	            <input type="text" name="idpost" value="<?=$_GET['id']?>" id="idpost" />
+	          
+       		</li>
 
            <li>
            	 	<label for="pseudo">Pseudo :</label>
@@ -39,7 +47,7 @@
        		</li>
      		 <li>
        		 <label><input class="button  button-primary" type="submit" name="ajouter" value="ajouter"></label> 
-	          <label><input class="button  button-cancel" type="reset" name="Annuler" value="Annuler"></label>
+	         <label><input class="button  button-cancel" type="reset" name="Annuler" value="Annuler"></label>
        		</li>
 
        </ul>    		 
