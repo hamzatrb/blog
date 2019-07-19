@@ -2,8 +2,8 @@
 
 include 'application/connexion_bdd.php';
 
-if(isset($_POST['ajouter']))
-{
+//if(isset($_POST['ajouter'])) a cause de ajax
+//{
 	if(!empty($_POST['pseudo']) && !empty($_POST['commentaire']) && !empty($_POST['idpost']))
 	{
 		
@@ -13,17 +13,39 @@ if(isset($_POST['ajouter']))
 
 		$req_add_comnt->execute(array($_POST['pseudo'],$_POST['commentaire'],$_POST['idpost']));
 
+		//echo "comment ajouter";
+
 	}
 	else
 	{
-		echo "aucune input envoye";
+		//echo "aucune input envoye";
 	}
-}
-else 
 
-echo "donnees post non envoye";
 
-header('location:show_post.php?id='.$_POST['idpost']);
+	$req = $pdo->prepare('	SELECT * from comment where 
+
+
+						 	Post_Id = ? 
+
+						');
+
+
+	$req->execute(array($_POST['idpost']));
+
+
+	$comment = $req->fetchAll();
+
+	$comments = json_encode($comment);// pour convertir le tableau en format json 
+
+	echo $comments;
+
+
+//}
+//else 
+
+//echo "donnees post non envoye";
+
+//header('location:show_post.php?id='.$_POST['idpost']);
 
 
 

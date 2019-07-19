@@ -1,0 +1,68 @@
+<div>
+	
+
+	<h2><a href=""><i class="fas fa-pen"></i>Editer un article</a></h2>
+	<form method="POST" action="edit_post.php?id=<?=$_GET['id']?>" class="generic-form">
+		<fieldset>
+
+       <legend><i class="far fa-comment"></i>Nouveau article</legend> <!-- Titre du fieldset --> 
+	       <ul>
+
+	           <li>
+	           	 	<label for="titre">titre</label>
+		            <input type="text" name="titre" value="<?=$edit_post['Title']?>" id="titre" />
+		          
+	       		</li>
+
+	           <li>
+	           	 	<label class="textarea" for="article">Article :</label>
+		             <textarea  name="article" value="" id="article" rows="12" cols="33"> <?=$edit_post['Contents']?></textarea>
+		          
+	       		</li>
+
+	       		 	 <li>
+       		   <label  for="auteur">Autheur:</label>
+       			
+	       		   <select name="auteur">
+	       			   	<?php foreach ($authors as $author):?>
+
+	       			   <?php if($author['Id'] == $edit_post['Author_Id'] ): ?>
+
+	       		   			<option selected="selected" value="<?=$author['Id']?>"><?=$author['FirstName']?> <?=$author['LastName']?>
+	       		   				<?php else:  ?>
+	       		   			<option  value="<?=$author['Id']?>"><?=$author['FirstName']?> <?=$author['LastName']?>
+	       		   				<?php endif; ?>
+	       		   			</option>
+	       		   		 <?php endforeach; ?>
+	       		   </select>
+       		  
+       		</li>
+       		<li>
+       		   <label  for="categorie">Categorie:</label>
+       		   
+       		   <select name="categorie">
+       		  	 	<?php foreach ($categories as $categorie): ?>
+       		  	 		<?php if($categorie['Id'] == $edit_post['Category_Id'] ): ?>
+       		   			<option selected="selected" value="<?=$categorie['Id']?>"><?=$categorie['Name']?></option>
+       		   			<?php else:  ?>
+       		   			<option  value="<?=$categorie['Id']?>"><?=$categorie['Name']?></option>	
+       		   			<?php endif; ?>
+       		   		<?php endforeach; ?>
+       		   </select>
+       		 </li>
+       		 <li>  
+	       		 <label><input class="button  button-primary" type="submit" name="ajouter" value="ajouter"></label> 
+		         <label><input class="button  button-cancel" type="reset" name="Annuler" value="Annuler"></label>
+	       	</li>
+
+	       </ul>    		 
+
+           
+     
+
+  	 </fieldset>
+
+ 
+
+	</form>
+</div>

@@ -2,9 +2,14 @@
 
 include 'application/connexion_bdd.php';
 
+
+
+//si on a cliqué sur le bouton d'ajout pour ajouter un article on exécute ce code 
+
 if(isset($_POST['ajouter']))
 
 {
+
 	if (!empty($_POST['titre']) && !empty($_POST['article']) && !empty($_POST['auteur']) && !empty($_POST['categorie']))
 	{
 
@@ -14,8 +19,10 @@ if(isset($_POST['ajouter']))
 		$req->execute(array($_POST['titre'],$_POST['article'],$_POST['auteur'],$_POST['categorie']  ));
 
 	}
-	
 
+	header('location:admin.php');
+
+	
   
 }
 

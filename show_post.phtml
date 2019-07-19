@@ -12,6 +12,8 @@
 		</li>
 	</ul>	
 	<hr>
+
+	  <div id="aff_com">
 	<?php foreach ($comments  as $comment): ?>
 
 		<p><i class="fas fa-comments"></i><strong>rédigé le <small> " 
@@ -19,7 +21,11 @@
 			<?=htmlspecialchars($comment['NickName'])?></strong></p>
 		<p> <?=htmlspecialchars($comment['Contents'])?></p>
 	<?php endforeach; ?>
+	<?php if($comments): ?>
 	<hr>
+	<?php endif?>
+
+</div>
 
 	<form method="POST" action="add_comment.php" class="generic-form">
  
@@ -46,7 +52,7 @@
 	          
        		</li>
      		 <li>
-       		 <label><input class="button  button-primary" type="submit" name="ajouter" value="ajouter"></label> 
+       		 <label><input class="button  button-primary" type="submit" name="ajouter" value="ajouter" id="ajouter"></label> 
 	         <label><input class="button  button-cancel" type="reset" name="Annuler" value="Annuler"></label>
        		</li>
 
@@ -61,5 +67,6 @@
 
 </form>
 	
+
 
 </div>
